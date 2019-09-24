@@ -1,0 +1,1524 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STATISTIK</title>
+
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link href="layout/styles/statistik.css" rel="stylesheet" type="text/css" media="all">
+    <script src="canvasjs.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="tabel/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts@latest"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <script src="tabel/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <link rel="stylesheet" href="tabel/datatables.net-bs/css/dataTables.bootstrap.min.css">
+
+   <link href='https://fonts.googleapis.com/css?family=Fira Sans Condensed' rel='stylesheet'>
+
+    <!-- you need to include the shieldui css and js assets in order for the charts to work -->
+    <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light-bootstrap/all.min.css" />
+    <link id="gridcss" rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/dark-bootstrap/all.min.css" />
+
+    <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+    <script type="text/javascript" src="http://www.prepbootstrap.com/Content/js/gridData.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <style>
+          /* width */
+          ::-webkit-scrollbar {
+            width: 4px;
+          }
+
+          /* Track */
+          ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+          }
+
+          /* Handle */
+          ::-webkit-scrollbar-thumb {
+            background: #888;
+          }
+
+          /* Handle on hover */
+          ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+          }
+    </style>
+</head>
+
+<body scroll="no-scroll" data-target=".navbar" data-offset="30" style= 'background-color:#f3f3f3'>
+    <div id="wrapper">
+          <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="background-color: #000; border-color:#000 ">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+                <a class="navbar-brand brand-logo" style="font-family: 'Poppins', sans-serif; padding-top: 15px; color: #fff"><i class="fa fa-bar-chart-o"></i> STATISTIK - PANTAU<span class="logo-dec" style="font-family: 'Poppins', sans-serif"> HUTAN DESA</span></a>
+            </div>
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="nav navbar-nav side-nav" style="list-style-type:square;">
+                  <li style=" width: 260px; padding-top: 5px;"><a  style='font-family: "Poppins", sans-serif; font-size: 14px;font-weight: bold; border-bottom: 1px solid #def0e8; width: 262px'> KONTEN INFORMASI </a></li>
+
+                    <li style=" width: 260px; padding-top: 5px;"><a  style='font-family: "Poppins", sans-serif; font-size: 12px;font-weight: bold; width: 262px'> Monitoring Deforestasi Tahun 2019 </a>
+                      <ul style="list-style-type:square; padding-bottom: 8px; padding-left: 25px"><a href="#section1"  style='font-family: "Poppins", sans-serif; font-size: 12px; color: #919191;'> Deforestasi Tahun 2019 </a></ul>
+                      <ul style="padding-left: 25px"><a href="#section2" style='font-family: "Poppins", sans-serif; font-size: 12px; color: #919191;'> Deforestasi Tahun 2019 Terhadap Baseline (Sebelum Intervensi HD) Tahun 1990-2016 </a></ul>
+                    </li>
+                    <li style=" width: 260px;"><a  style='font-family: "Poppins", sans-serif; font-size: 12px;font-weight: bold; width: 262px'></i> Monitoring Deforestasi Tahun 2018 </a>
+                      <ul style="padding-bottom: 8px; padding-left: 25px"><a href="#section3" style='font-family: "Poppins", sans-serif; font-size: 12px; color: #919191;'> Deforestasi Tahun 2018 </a></ul>
+                      <ul style="padding-left: 25px"><a href="#section4" style='font-family: "Poppins", sans-serif; font-size: 12px; color: #919191;'> Deforestasi Tahun 2018 Terhadap Baseline (Sebelum Intervensi HD) Tahun 1990-2016 </a></ul>
+                    </li>
+                    <li style=" width: 260px;"><a  style='font-family: "Poppins", sans-serif; font-size: 12px;font-weight: bold; width: 262px'></i> Historis Deforestasi dan Degradasi di BPPT Terhadap Baseline FREL (1990 - 2012) </a>
+                      <ul style="padding-bottom: 8px;padding-left: 25px"><a href="#section5" style='font-family: "Poppins", sans-serif; font-size: 12px; color: #919191;'> Deforestasi di BPPT Terhadap Baseline FREL </a></ul>
+                      <ul style="padding-bottom: 8px;padding-left: 25px"><a href="#section6" style='font-family: "Poppins", sans-serif; font-size: 12px; color: #919191;'> Degradasi di BPPT Terhadap Baseline FREL </a></ul>
+                    </li>
+                    <li style=" width: 260px;"><a  style='font-family: "Poppins", sans-serif; font-size: 12px;font-weight: bold; width: 262px'></i>Kebakaran Hutan dan Lahan (Karhutla) </a>
+                      <ul style="padding-bottom: 8px; padding-left: 25px"><a href="#section7" style='font-family: "Poppins", sans-serif; font-size: 12px; color: #919191;'> Historis Karhutla Bulanan Per September Tahun 2019 </a></ul>
+                      <ul style="padding-bottom: 8px; padding-left: 25px"><a href="#section8" style='font-family: "Poppins", sans-serif; font-size: 12px; color: #919191;'> Historis Karhutla Tahun 2015 - September Tahun 2019 </a></ul>
+                    </li>
+                    <li style=" width: 260px;"><a  style='font-family: "Poppins", sans-serif; font-size: 12px;font-weight: bold; width: 262px'></i> Baseline Data </a>
+                      <ul style="padding-bottom: 8px;padding-left: 25px"><a href="#" style='font-family: "Poppins", sans-serif; font-size: 12px; color: #919191;'> Administrasi </a></ul>
+                      <ul style="padding-bottom: 8px;padding-left: 25px"><a href="#" style='font-family: "Poppins", sans-serif; font-size: 12px; color: #919191;'> Kawasan Hutan </a></ul>
+                      <ul style="padding-bottom: 8px;padding-left: 25px"><a href="#" style='font-family: "Poppins", sans-serif; font-size: 12px; color: #919191;'> Izin HPHD </a></ul>
+                      <ul style="padding-left: 25px"><a href="#" style='font-family: "Poppins", sans-serif; font-size: 12px; color: #919191;'> Tutupan Lahan </a></ul>
+                    </li>
+                </ul>
+
+
+            <nav class="navbar2">
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav pull-right" style='margin-right:7.5px'>
+                          <li class="nav-item" style= 'color: #fff;'>
+                              <a class="nav-link" href="index.html" style='color: #fff; font-weight: normal;font-size: 14px; font-family:"Poppins", sans-serif;'>BERANDA</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="pantauhd.html" style='color: #fff; font-weight: normal;font-size: 14px; font-family:"Poppins", sans-serif;'>PETA</a>
+                          </li>
+                          <li class="active">
+                              <a class="nav-link" href="statistik.html#section1" style='font-weight: normal;font-size: 14px; font-family:"Poppins", sans-serif;'>STATISTIK</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="unduh.html" style='color: #fff; font-weight: normal;font-size: 14px; font-family:"Poppins", sans-serif;'>UNDUH</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="http://info.pantauhutandesa.com/" style='color: #fff; font-weight: normal;font-size: 14px; font-family:"Poppins", sans-serif;'>TENTANG HUTAN DESA</a>
+                          </li>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            </div>
+        </nav>
+
+        <div id="section1" class="container-fluid" style="padding-top:60px">
+          <div class="hoc container clear">
+            <!-- ################################################################################################ -->
+            <div class="row">
+              <div class="sectiontitle">
+                <h6 class="heading" style='font-family:"Poppins", sans-serif; font-size:22px; font-weight:bold;margin-left:14px;'>MONITORING DEFORESTASI TAHUN 2019</h>
+              </div>
+                      <div class="col-md-8" >
+                          <div class="panel panel-primary" style="height: 419px;">
+                              <div class="panel-body">
+                                <div id="chart" style="max-height: 350px; background: rgb(255, 255, 255);">
+                              </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="panel panel-primary" style="height: 419px;max-width: 750px;">
+                              <div class="panel-body feed" >
+                                  <div id="chartContainer" style="height: 366px;"></div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+            <!-- ################################################################################################ -->
+          </div>
+
+          <div class="hoc container clear">
+            <div class="row">
+                <div class="col-lg-12">
+                  <div class="panel panel-primary" style="height: 413px">
+                    <div class="panel" style="padding-top: 20px; padding-left: 20px;">
+                        <h3 class="panel-title" style="font-size: 18px;margin-top: 3px; margin-bottom: 8px">Rekapitulasi Monitoring Deforestasi</h3>
+                          <h3 class="panel-title" style="font-size: 12px"> Tabel Rekapitulasi Monitoring Deforestasi Tahun 2019</h3>
+                    </div>
+                    <div class="panel-body" style="height: 375px;">
+                      <div class="box-body" style="overflow-y: scroll; height: 290px">
+              <table id="example2" class="table table-bordered table-hover" style="font-size: 12px">
+                <thead>
+                  <tr>
+                    <th rowspan="2" style="width: 50px;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5">No</th>
+                    <th rowspan="2"style="width: 120px;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5">Bulan</th>
+                    <th rowspan="2" style="width: 150px;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5">Desa</th>
+                    <th colspan="3"style="background:#D4D4D4; vertical-align: middle; text-align: center;border: 1px solid #B8B5B5">Hutan Desa</th>
+                    <th colspan="3"style="background:#D4D4D4; vertical-align: middle; text-align: center;border: 1px solid #B8B5B5">Non Hutan Desa</th>
+                    <th rowspan="2"style="width: 80px;background:#D4D4D4; vertical-align: middle; text-align: right;border: 1px solid #B8B5B5">Total (ha)</th>
+                  </tr>
+                  <tr >
+                    <td style="width: 130px;font-weight:bold;background:#D4D4D4; vertical-align: middle; text-align: center;border: 1px solid #B8B5B5">Penyebab</td>
+                    <td style="width: 225px;font-weight:bold;background:#D4D4D4; vertical-align: middle; text-align: center;border: 1px solid #B8B5B5">Koordinat</td>
+                    <td style="width: 80px; font-weight:bold;background:#D4D4D4; vertical-align: middle; text-align: right;border: 1px solid #B8B5B5">Luas (ha)</td>
+                    <td style="width: 130px;font-weight:bold;background:#D4D4D4; vertical-align: middle; text-align: center;border: 1px solid #B8B5B5 ">Penyebab</td>
+                    <td style="width: 225px;font-weight:bold;background:#D4D4D4; vertical-align: middle; text-align: center;border: 1px solid #B8B5B5 ">Koordinat</td>
+                    <td style="width: 80px;font-weight:bold;background:#D4D4D4; vertical-align: middle; text-align: right;border: 1px solid #B8B5B5 ">Luas (ha)</td>
+                  </tr>
+                  <tr>
+                    <td style="border: 1px solid #B8B5B5">1</td>
+                    <td style="border: 1px solid #B8B5B5">Januari</td>
+                    <td style="border: 1px solid #B8B5B5">Batu Ampar</td>
+
+                    <td style="border: 1px solid #B8B5B5">Illegal Logging</td>
+                    <td style="border: 1px solid #B8B5B5">0° 37' 14.294" S - 109° 22' 3.688" E</td>
+                    <td style="vertical-align: middle; text-align: right;border: 1px solid #B8B5B5">3.30</td>
+
+                    <td style="border: 1px solid #B8B5B5">Bukaan Lahan Perkebunan</td>
+                    <td style="border: 1px solid #B8B5B5">0° 47' 51.700" S - 109° 33' 57.822" E</td>
+                    <td style="vertical-align: middle; text-align: right;border: 1px solid #B8B5B5">4.46</td>
+                    <td style="vertical-align: middle; text-align: right;border: 1px solid #B8B5B5">7.76</td>
+                  </tr>
+                  <tr>
+                    <td style="border: 1px solid #B8B5B5">2</td>
+                    <td style="border: 1px solid #B8B5B5">Januari</td>
+                    <td style="border: 1px solid #B8B5B5">Tanjung Harapan</td>
+
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="border: 1px solid #B8B5B5">-</td>
+
+                    <td style="border: 1px solid #B8B5B5">Bukaan HPH</td>
+                    <td style="border: 1px solid #B8B5B5">0° 52' 39.319" S - 109° 22' 29.562" E</td>
+                    <td style="vertical-align: middle; text-align: right;border: 1px solid #B8B5B5">9.65</td>
+                    <td style="vertical-align: middle; text-align: right;border: 1px solid #B8B5B5">9.65</td>
+                  </tr>
+                  <tr>
+                    <th colspan="5"style="font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5" >Januari Total</th>
+                    <td style="vertical-align: middle; text-align: right;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5">3.3</td>
+                    <td colspan="2"style="font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5"></td>
+                    <td style="vertical-align: middle; text-align: right;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5">14.11</td>
+                    <td style="vertical-align: middle; text-align: right;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5">17.41</td>
+                  </tr>
+                  <tr>
+                    <td style="border: 1px solid #B8B5B5">3</td>
+                    <td style="border: 1px solid #B8B5B5">Februari</td>
+                    <td style="border: 1px solid #B8B5B5">Sungai Besar</td>
+
+                    <td style="border: 1px solid #B8B5B5">Illegal Logging</td>
+                    <td style="border: 1px solid #B8B5B5">0° 47' 18.751" S - 109° 17' 58.100" E</td>
+                    <td style="vertical-align: middle; text-align: right;border: 1px solid #B8B5B5">0.29</td>
+
+
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="vertical-align: middle; text-align: right;border: 1px solid #B8B5B5">0.29</td>
+                  </tr>
+                  <tr>
+                    <td style="border: 1px solid #B8B5B5">4</td>
+                    <td style="border: 1px solid #B8B5B5">Februari</td>
+                    <td style="border: 1px solid #B8B5B5">Sungai Jawi</td>
+
+                    <td style="border: 1px solid #B8B5B5">Illegal Logging</td>
+                    <td style="border: 1px solid #B8B5B5">0° 47' 33.073" S - 109° 17' 27.349" E</td>
+                    <td style="vertical-align: middle; text-align: right;border: 1px solid #B8B5B5">1.84</td>
+
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="vertical-align: middle; text-align: right;border: 1px solid #B8B5B5">1.84</td>
+                  </tr>
+                  <tr>
+                    <th colspan="5"  style="vertical-align: middle;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5">Februari Total</th>
+                    <td style="vertical-align: middle; text-align: right;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5">2.13</td>
+                    <td colspan="2"  style="vertical-align: middle; text-align: right;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5"></td>
+                    <td  style="vertical-align: middle; text-align: right;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5">-</td>
+                    <td style="vertical-align: middle; text-align: right;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5">2.13</td>
+                  </tr>
+                  <tr>
+                    <td style="border: 1px solid #B8B5B5">5</td>
+                    <td style="border: 1px solid #B8B5B5">Maret</td>
+                    <td style="border: 1px solid #B8B5B5">Sungai Besar</td>
+
+                    <td style="border: 1px solid #B8B5B5">Illegal Logging</td>
+                    <td style="border: 1px solid #B8B5B5">0° 47' 16.075" S - 109° 17' 38.137" E</td>
+                    <td style="vertical-align: middle; text-align: right;border: 1px solid #B8B5B5">1.51</td>
+
+
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="vertical-align: middle; text-align: right;border: 1px solid #B8B5B5">1.51</td>
+                  </tr>
+                  <tr>
+                    <th colspan="5" style="vertical-align: middle;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5">Maret Total</th>
+                    <td style="vertical-align: middle; text-align: right;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5">1.51</td>
+                    <td colspan="2" style="vertical-align: middle;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5"></td>
+                    <td style="border: 1px solid #B8B5B5;background:#D4D4D4">-</td>
+                    <td style="vertical-align: middle; text-align: right;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5">1.51</td>
+                  </tr>
+                  <tr>
+                    <td style="border: 1px solid #B8B5B5">6</td>
+                    <td style="border: 1px solid #B8B5B5">April</td>
+                    <td style="border: 1px solid #B8B5B5">-</td>
+
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="border: 1px solid #B8B5B5">-</td>
+
+
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                  </tr>
+                  <tr>
+                    <th colspan="5" style="vertical-align: middle;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5" >April Total</th>
+                    <td style="vertical-align: middle;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5">-</td>
+                    <td colspan="2" style="vertical-align: middle;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5"></td>
+                    <td style="vertical-align: middle;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5">-</td>
+                    <td style="vertical-align: middle;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5">-</td>
+                  </tr>
+                  <tr>
+                    <td style="border: 1px solid #B8B5B5">7</td>
+                    <td style="border: 1px solid #B8B5B5">Mei</td>
+                    <td style="border: 1px solid #B8B5B5">-</td>
+
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="border: 1px solid #B8B5B5">-</td>
+
+
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                  </tr>
+                  <tr>
+                    <th colspan="5" style="vertical-align: middle;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5" >Mei Total</th>
+                    <td style="vertical-align: middle;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5">-</td>
+                    <td colspan="2" style="vertical-align: middle;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5"></td>
+                    <td style="vertical-align: middle;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5">-</td>
+                    <td style="vertical-align: middle;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5">-</td>
+                  </tr>
+                  <tr>
+                    <td style="border: 1px solid #B8B5B5">8</td>
+                    <td style="border: 1px solid #B8B5B5">Juni</td>
+                    <td style="border: 1px solid #B8B5B5">Batu Ampar</td>
+
+                    <td style="border: 1px solid #B8B5B5">Illegal Logging</td>
+                    <td style="border: 1px solid #B8B5B5">0° 43' 49.350" S - 109° 28' 34.091" E</td>
+                    <td style="vertical-align: middle; text-align: right;border: 1px solid #B8B5B5">0.88</td>
+
+
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                  </tr>
+                  <tr>
+                    <th colspan="5" style="vertical-align: middle;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5" >Juni Total</th>
+                    <td style="vertical-align: middle; text-align: right;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5">0.88</td>
+                    <td colspan="2" style="vertical-align: middle;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5" ></td>
+                    <td style="border: 1px solid #B8B5B5; background:#D4D4D4">-</td>
+                    <td style="vertical-align: middle; text-align: right;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5">0.88</td>
+                  </tr>
+                  <tr>
+                    <td style="border: 1px solid #B8B5B5">9</td>
+                    <td style="border: 1px solid #B8B5B5">Juli</td>
+                    <td style="border: 1px solid #B8B5B5">Batu Ampar</td>
+
+                    <td style="border: 1px solid #B8B5B5">Illegal Logging</td>
+                    <td style="border: 1px solid #B8B5B5">0° 40' 44.125" S - 109° 31' 34.296" E</td>
+                    <td style="vertical-align: middle; text-align: right;border: 1px solid #B8B5B5">3.07</td>
+
+
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="vertical-align: middle; text-align: right;border: 1px solid #B8B5B5">3.07</td>
+                  </tr>
+                  <tr>
+                    <td style="border: 1px solid #B8B5B5">10</td>
+                    <td style="border: 1px solid #B8B5B5">Juli</td>
+                    <td style="border: 1px solid #B8B5B5">Tanjung Harapan</td>
+
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="border: 1px solid #B8B5B5">-</td>
+
+                    <td style="border: 1px solid #B8B5B5">Bukaan HPH</td>
+                    <td style="border: 1px solid #B8B5B5">0° 52' 21.142" S - 109° 22' 33.144" E</td>
+                    <td style="vertical-align: middle; text-align: right;border: 1px solid #B8B5B5">16.31</td>
+                    <td style="vertical-align: middle; text-align: right;border: 1px solid #B8B5B5">19.38</td>
+                  </tr>
+                  <tr>
+                    <th colspan="5" style="vertical-align: middle;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5" >Juli Total</th>
+                    <td style="vertical-align: middle; text-align: right;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5">3.07</td>
+                    <td colspan="2" style="vertical-align: middle;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5" ></td>
+                    <td style="vertical-align: middle; text-align: right;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5">16.31</td>
+                    <td style="vertical-align: middle; text-align: right;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5">19.38</td>
+                  </tr>
+
+                  <tr>
+                    <td style="border: 1px solid #B8B5B5">11</td>
+                    <td style="border: 1px solid #B8B5B5">Agustus</td>
+                    <td style="border: 1px solid #B8B5B5">Batu Ampar</td>
+
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="border: 1px solid #B8B5B5">-</td>
+                    <td style="border: 1px solid #B8B5B5">-</td>
+
+                    <td style="border: 1px solid #B8B5B5">Illegal Logging</td>
+                    <td style="border: 1px solid #B8B5B5">0° 42' 49.624" S - 109° 40' 29.521" E</td>
+                    <td style="vertical-align: middle; text-align: right;border: 1px solid #B8B5B5">-</td>
+                    <td style="vertical-align: middle; text-align: right;border: 1px solid #B8B5B5">0.76</td>
+                  </tr>
+                  <tr>
+                    <th colspan="5" style="vertical-align: middle;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5" >Agustus Total</th>
+                    <td style="vertical-align: middle; text-align: right;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5">-</td>
+                    <td colspan="2" style="vertical-align: middle;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5" ></td>
+                    <td style="vertical-align: middle; text-align: right;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5">0.76</td>
+                    <td style="vertical-align: middle; text-align: right;font-weight:bold;background:#D4D4D4; vertical-align: middle;border: 1px solid #B8B5B5">0.76</td>
+                  </tr>
+                  <tr>
+                    <th colspan="5" style="border: 1px solid #B8B5B5;background:#D4D4D4; font-weight:bold">Total Deforestasi Per Agustus 2019</th>
+                    <td style="vertical-align: middle; text-align: right;border: 1px solid #B8B5B5;background:#D4D4D4; font-weight:bold">10.87</td>
+                    <td colspan="2"  style="border: 1px solid #B8B5B5;background:#D4D4D4; font-weight:bold"></td>
+                    <td style="vertical-align: middle; text-align: right;border: 1px solid #B8B5B5;background:#D4D4D4; font-weight:bold">31.19</td>
+                    <td style="vertical-align: middle; text-align: right;border: 1px solid #B8B5B5;background:#D4D4D4; font-weight:bold">42.06</td>
+                  </tr>
+                  </table>
+
+
+                          </div>
+                          <!-- /.box-body -->
+                          </div>
+                  <!-- /.box-body -->
+                          </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+
+                <div id="section2" class="container-fluid">
+                  <div class="hoc container clear">
+                    <div class="row" style="padding-top:50px">
+                        <h1 style='font-family:"Poppins", sans-serif; font-size:22px; font-weight:bold;margin-left:14px;'><b>DEFORESTASI 2019 TERHADAP BASELINE 1990-2016</b></h1>
+                        <div class="col-lg-12">
+                            <div class="panel panel-primary" style="height: 413px;">
+                                <div class="panel-body">
+                                <div id="chart2" style="max-height: 370px; background: rgb(255, 255, 255);">
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                          <div class="col-md-4">
+                              <div class="panel panel-primary" style="height: 413px">
+                                  <div class="panel-body">
+                                  <div id="chart3" style="max-height: 350px; background: rgb(255, 255, 255);">
+                                  </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-4">
+                              <div class="panel panel-primary" style="height: 413px">
+                                <div class="panel" style="padding-top: 20px; padding-left: 20px;">
+                                    <h3 class="panel-title" style="font-size: 18px;margin-top: 3px; margin-bottom: 8px">Capaian Penurunan Deforestasi</h3>
+                                      <h3 class="panel-title" style="font-size: 12px"> Rekapitulasi Penurunan Deforestasi Per Agustus 2019</h3>
+                                </div>
+                                <div class="panel-body" style="height: 375px;">
+                                  <div class="box-body" style="overflow-y: scroll; height: 290px">
+                          <table id="example3" class="table table-bordered table-hover" >
+                            <thead>
+                              <tr>
+                                <th rowspan="2" style="width: 50px;background:#D4D4D4;;border: 1px solid #B8B5B5">Deforestasi</th>
+                                <th rowspan="2"style="width: 80px;background:#D4D4D4;border: 1px solid #B8B5B5">Hutan Desa</th>
+                                <th rowspan="2" style="width: 80px;background:#D4D4D4;;border: 1px solid #B8B5B5">Non Hutan Desa</th>
+                              </tr>
+                              <tr>
+                              <tr>
+                                <td style="border: 1px solid #B8B5B5">Deforestasi Aktual Tahun 2015-2016</td>
+                                <td style="border: 1px solid #B8B5B5">2.116</td>
+                                <td style="border: 1px solid #B8B5B5">1.388</td>
+                              </tr>
+                              <tr>
+                                <td style="background:#D4D4D4;border: 1px solid #B8B5B5"></td>
+                                <td style="background:#D4D4D4;border: 1px solid #B8B5B5"></td>
+                                <td style="background:#D4D4D4;border: 1px solid #B8B5B5"></td>
+                              </tr>
+                              <tr>
+                                <td style="border: 1px solid #B8B5B5">Deforestasi Aktual Tahun 2016-2017</td>
+                                <td style="border: 1px solid #B8B5B5">2.493</td>
+                                <td style="border: 1px solid #B8B5B5">1.313</td>
+                              <tr>
+                              <tr>
+                                <td style="border: 1px solid #B8B5B5">Capaian 2016-2017 vs 2015-2016</td>
+                                <td style="border: 1px solid #B8B5B5"><i class="fa fa-long-arrow-up"> 17,84%</td>
+                                <td style="color: red;border: 1px solid #B8B5B5"><i class="fa fa-long-arrow-down"> 5,39%</td>
+                              <tr>
+                              <tr>
+                                <td style="background:#D4D4D4;border: 1px solid #B8B5B5"></td>
+                                <td style="background:#D4D4D4;border: 1px solid #B8B5B5"></td>
+                                <td style="background:#D4D4D4;border: 1px solid #B8B5B5"></td>
+                              </tr>
+                              <tr>
+                                <td style="border: 1px solid #B8B5B5">Deforestasi Aktual Tahun 2017-2018</td>
+                                <td style="border: 1px solid #B8B5B5">269</td>
+                                <td style="border: 1px solid #B8B5B5">253</td>
+                              <tr>
+                              <tr>
+                                <td style="border: 1px solid #B8B5B5">Capaian 2017-2018 vs 2016-2017</td>
+                                <td style="color: red;border: 1px solid #B8B5B5"><i class="fa fa-long-arrow-down"> 89.21%</td>
+                                <td style="color: red;border: 1px solid #B8B5B5"><i class="fa fa-long-arrow-down"> 80.73%</td>
+                              <tr>
+                                <tr>
+                                  <td style="background:#D4D4D4;border: 1px solid #B8B5B5"></td>
+                                  <td style="background:#D4D4D4;border: 1px solid #B8B5B5"></td>
+                                  <td style="background:#D4D4D4;border: 1px solid #B8B5B5"></td>
+                                </tr>
+                                <tr>
+                                 <td style="border: 1px solid #B8B5B5">Deforestasi Aktual Tahun Per Agustus 2019</td>
+                                  <td style="border: 1px solid #B8B5B5">10,87</td>
+                                  <td style="border: 1px solid #B8B5B5">31.19</td>
+                                <tr>
+                                <tr>
+                              <td style="border: 1px solid #B8B5B5">Capaian Per Agustus 2019 vs 2017-2018</td>
+                                  <td style="color: red;border: 1px solid #B8B5B5"><i class="fa fa-long-arrow-down"> 95,96%</td>
+                                  <td style="color: red;border: 1px solid #B8B5B5"><i class="fa fa-long-arrow-down"> 87,67%</td>
+                                <tr>
+                              </table>
+                                      </div>
+                                      <!-- /.box-body -->
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+
+
+
+
+                      <div id="section3" class="container-fluid">
+                        <div class="hoc container clear">
+                          <div class="row" style="padding-top:50px">
+                            <h1 style='font-family:"Poppins", sans-serif; font-size:22px; font-weight:bold;margin-left:14px;'><b>MONITORING DEFORESTASI TAHUN 2018</b></h1>
+                              <div class="col-md-8" style= >
+                                  <div class="panel panel-primary" style="height: 413px;">
+                                      <div class="panel-body">
+                                      <div id="chart4" style="max-height: 350px; background: rgb(255, 255, 255);">
+                                      </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-4">
+                                  <div class="panel panel-primary" style="height: 413px;">
+                                      <div class="panel-body feed" >
+                                          <div id="chartContainer2" style="height: 90%"></div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                        <div id="section4" class="container-fluid" style="padding-top: 60px">
+                          <div class="hoc container clear">
+                          <div class="row">
+                              <h1 style='font-family:"Poppins", sans-serif; font-size:22px; font-weight:bold;margin-left:14px;'><b>DEFORESTASI 2018 TERHADAP BASELINE 1990-2016</b></h1>
+                                <div class="col-md-8" >
+                                    <div class="panel panel-primary" style="height: 413px">
+                                        <div class="panel-body" >
+                                        <div id="chart5" style="max-height: 350px; background: rgb(255, 255, 255);">
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="panel panel-primary" style="height: 413px">
+                                      <div class="panel" style="padding-top: 20px; padding-left: 20px;">
+                                          <h3 class="panel-title" style="font-size: 18px;margin-top: 3px; margin-bottom: 8px">Capaian Penurunan Deforestasi</h3>
+                                            <h3 class="panel-title" style="font-size: 12px"> Capaian Penurunan Deforestasi Tahun 2018</h3>
+                                      </div>
+                                          <div class="panel-body" >
+                                            <div class="box-body" style="overflow-y: scroll; height: 257px" >
+                                <table id="example3" class="table table-bordered table-hover">
+                                  <thead>
+                                    <tr>
+                                      <th rowspan="2" style="width: 50px;background:#D4D4D4;;border: 1px solid #B8B5B5">Deforestasi</th>
+                                      <th rowspan="2"style="width: 80px;background:#D4D4D4;border: 1px solid #B8B5B5">Hutan Desa</th>
+                                      <th rowspan="2" style="width: 80px;background:#D4D4D4;;border: 1px solid #B8B5B5">Non Hutan Desa</th>
+                                    </tr>
+                                    <tr>
+                                    <tr>
+                                      <td style="border: 1px solid #B8B5B5">Deforestasi Aktual Tahun 2015-2016</td>
+                                      <td style="border: 1px solid #B8B5B5">2.116</td>
+                                      <td style="border: 1px solid #B8B5B5">1.388</td>
+                                    </tr>
+                                    <tr>
+                                      <td style="background:#D4D4D4;border: 1px solid #B8B5B5"></td>
+                                      <td style="background:#D4D4D4;border: 1px solid #B8B5B5"></td>
+                                      <td style="background:#D4D4D4;border: 1px solid #B8B5B5"></td>
+                                    </tr>
+                                    <tr>
+                                      <td style="border: 1px solid #B8B5B5">Deforestasi Aktual Tahun 2016-2017</td>
+                                      <td style="border: 1px solid #B8B5B5">2.493</td>
+                                      <td style="border: 1px solid #B8B5B5">1.313</td>
+                                    <tr>
+                                    <tr>
+                                      <td style="border: 1px solid #B8B5B5">Capaian 2016-2017 vs 2015-2016</td>
+                                      <td style="border: 1px solid #B8B5B5"><i class="fa fa-long-arrow-up"> 17,84%</td>
+                                      <td style="color: red;border: 1px solid #B8B5B5"><i class="fa fa-long-arrow-down"> 5,39%</td>
+                                    <tr>
+                                    <tr>
+                                      <td style="background:#D4D4D4;border: 1px solid #B8B5B5"></td>
+                                      <td style="background:#D4D4D4;border: 1px solid #B8B5B5"></td>
+                                      <td style="background:#D4D4D4;border: 1px solid #B8B5B5"></td>
+                                    </tr>
+                                    <tr>
+                                      <td style="border: 1px solid #B8B5B5">Deforestasi Aktual Tahun 2017-2018</td>
+                                      <td style="border: 1px solid #B8B5B5">269</td>
+                                      <td style="border: 1px solid #B8B5B5">253</td>
+                                    <tr>
+                                    <tr>
+                                      <td style="border: 1px solid #B8B5B5">Capaian 2017-2018 vs 2016-2017</td>
+                                      <td style="color: red;border: 1px solid #B8B5B5"><i class="fa fa-long-arrow-down"> 89.21%</td>
+                                      <td style="color: red;border: 1px solid #B8B5B5"><i class="fa fa-long-arrow-down"> 80.73%</td>
+                                    <tr>
+                                    </table>
+                                            </div>
+                                            <!-- /.box-body -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div id="section5" class="container-fluid">
+                              <div class="hoc container clear">
+                                <div class="row" style="padding-top:50px">
+                                    <h1 style='font-family:"Poppins", sans-serif; font-size:22px; font-weight:bold;margin-left:14px;'><b>DEFORESTASI DI BPPT TERHADAP BASELINE FREL</b></h1>
+                                    <div class="col-lg-12">
+                                        <div class="panel panel-primary" style="height: 413px;">
+                                            <div class="panel-body">
+                                            <div id="chart6" style="max-height: 370px; background: rgb(255, 255, 255);">
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div id="section6" class="container-fluid">
+                              <div class="hoc container clear">
+                                <div class="row" style="padding-top:50px">
+                                    <h1 style='font-family:"Poppins", sans-serif; font-size:22px; font-weight:bold;margin-left:14px;'><b>DEGRADASI DI BPPT TERHADAP BASELINE FREL</b></h1>
+                                    <div class="col-lg-12">
+                                        <div class="panel panel-primary" style="height: 413px;">
+                                            <div class="panel-body">
+                                            <div id="chart7" style="max-height: 370px; background: rgb(255, 255, 255);">
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div id="section7" class="container-fluid" style="padding-top:60px">
+                              <div class="hoc container clear">
+                                <!-- ################################################################################################ -->
+                                <div class="row">
+                                  <div class="sectiontitle">
+                                    <h6 class="heading" style='font-family:"Poppins", sans-serif; font-size:22px; font-weight:bold;margin-left:14px;'>KEBAKARAN HUTAN DAN LAHAN BULANAN TAHUN 2019</h>
+                                  </div>
+                                          <div class="col-md-8" >
+                                              <div class="panel panel-primary" style="height: 419px;">
+                                                  <div class="panel-body">
+                                                    <div id="chartkarhutlabulanan" style="max-height: 350px; background: rgb(255, 255, 255);">
+                                                  </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="col-md-4">
+                                              <div class="panel panel-primary" style="height: 419px;max-width: 750px;">
+                                                  <div class="panel-body feed" >
+                                                      <div id="chartkarhutla2bulanan" style="height: 366px;"></div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                <!-- ################################################################################################ -->
+                              </div>
+                            </div>
+
+                            <div id="section8" class="container-fluid" style="padding-top:60px">
+                              <div class="hoc container clear">
+                                <!-- ################################################################################################ -->
+                                <div class="row">
+                                  <div class="sectiontitle">
+                                    <h6 class="heading" style='font-family:"Poppins", sans-serif; font-size:22px; font-weight:bold;margin-left:14px;'>HISTORING KEBAKARAN HUTAN DAN LAHAN</h>
+                                  </div>
+                                          <div class="col-md-8" >
+                                              <div class="panel panel-primary" style="height: 419px;">
+                                                  <div class="panel-body">
+                                                    <div id="chartkarhutla" style="max-height: 350px; background: rgb(255, 255, 255);">
+                                                  </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="col-md-4">
+                                              <div class="panel panel-primary" style="height: 419px;max-width: 750px;">
+                                                  <div class="panel-body feed" >
+                                                      <div id="chartkarhutla2" style="height: 366px;"></div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                <!-- ################################################################################################ -->
+                              </div>
+                            </div>
+
+
+    <script>
+
+    </script>
+
+    <script type="text/javascript">
+                Highcharts.setOptions({
+                chart: {
+                style: {
+                    fontFamily: 'Poppins'
+                }
+                }
+                });
+
+                Highcharts.chart('chart', {
+                title: {
+                text: 'Monitoring Deforestasi (2019)',
+                font: 'times new roman',
+                align: 'left'
+
+                },
+                subtitle: {
+                text: 'Pantau Hutan Desa',
+                align: 'left'
+                },
+                xAxis: {
+                categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+                },
+                yAxis: [{ // Primary yAxis
+                labels: {
+                    format: '{value} ha',
+                    style: {
+                        color: Highcharts.getOptions().colors[1]
+                    }
+                },
+                title: {
+                    text: 'Deforestasi',
+
+                    style: {
+                        color: Highcharts.getOptions().colors[1]
+                    }
+                },
+                opposite: false
+
+
+                }],
+                series: [{
+                type: 'column',
+                name: 'HD',
+                data: [3.30, 2.13, 1.51, 0, 0, 0.88,3.07,0],
+                color: '#133CBB',
+                }, {
+                type: 'column',
+                name: 'Non HD',
+                data: [14.12, 0, 0, 0, 0, 0, 16.31,0.76],
+                color: '#BF0B23'
+                }, {
+                type: 'spline',
+                name: 'Rerata HD',
+                data: [29.9, 29.9, 29.9, 29.9, 29.9, 29.9, 29.9, 29.9, 29.9, 29.9, 29.9, 29.9],
+                color: '#BF0B23',
+                label: false,
+                marker: {
+                    lineWidth: 2,
+                    fillColor: 'black'
+                }
+
+                }, {
+                type: 'spline',
+                name: 'Rerata Non HD',
+                data: [65.76, 65.76, 65.76, 65.76, 65.76, 65.76, 65.76, 65.76, 65.76, 65.76, 65.76, 65.76],
+                color: '#3E1DE2',
+                label: false,
+                marker: {
+                    lineWidth: 2,
+                    fillColor: 'black'
+                }
+                },]
+                });
+
+                Highcharts.setOptions({
+    chart: {
+        style: {
+            fontFamily: 'Poppins'
+        }
+    }
+});
+
+                Highcharts.chart('chartContainer', {
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false,
+                        type: 'pie'
+                    },
+                    title: {
+                        text: 'Penyebab Deforestasi Tahun 2019',
+                        align: 'left'
+                    },
+                    subtitle: {
+                        text: 'Penyebab deforestasi per Agustus 2019',
+                        align: 'left',
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: false
+                            },
+                            showInLegend: true
+                        }
+                    },
+                    series: [{
+                        name: 'Brands',
+                        colorByPoint: true,
+                        data: [{
+                            name: 'Bukaan Lahan Perkebunan',
+                            color: '#BF0B23',
+                            y: 10.63,
+                            sliced: true,
+                            selected: true
+
+                        }, {
+                            name: 'Bukaan HPH',
+                            color: '#0000FF',
+                            y: 61.71
+                        }, {
+                            name: 'Illegal Logging',
+                            color: '#00FF00',
+                            y: 27.67
+                        }],
+                    }]
+                });
+
+                      Highcharts.setOptions({
+        chart: {
+            style: {
+                fontFamily: 'Poppins'
+            }
+        }
+    });
+
+    Highcharts.chart('chart2', {
+        title: {
+            text: 'Deforestasi Terhadap Baseline',
+            font: 'times new roman',
+            align: 'left'
+
+        },
+         subtitle: {
+            text: 'Monitoring Deforestasi Tahun 2019 Terhadap Baseline (1990-2016)',
+            align: 'left'
+        },
+        xAxis: {
+            categories: ["1990-1996", "1996-2000", "2000-2003", "2003-2006", "2006-2009", "2009-2011", "2011-2012", "2012-2013", "2013-2014", "2014-2015", "2015-2016", "2016-2017", "2017-2018", "Per Agust 2019"]
+        },
+        yAxis: [{ // Primary yAxis
+            labels: {
+                format: '{value} ha',
+                style: {
+                    color: Highcharts.getOptions().colors[1]
+                }
+            },
+            title: {
+                text: 'Deforestasi',
+
+                style: {
+                    color: Highcharts.getOptions().colors[1]
+                }
+            },
+            opposite: false
+
+
+        }],
+        series: [{
+            type: 'column',
+            name: 'HD',
+            data: [2884, 280, 616, 259, 244, 1088, 59, 975, 564, 256,2116, { y: 2493, color: '#FFA500'}, { y: 269, color: '#FFA500'}, { y: 10.87, color: '#FFA500'} ],
+           	color: '#CAC8C9',
+        }, {
+            type: 'column',
+            name: 'Non HD',
+            data: [5034, 502, 236, 1269, 4728, 3089, 525, 2645, 567, 533, 1388, { y:1313, color: '#BF0B23'},  { y:253, color: '#BF0B23'}, { y: 30.43, color: '#BF0B23'} ],
+            color: '#252324'
+        }, {
+            type: 'spline',
+            name: 'Rerata HD',
+            data: [246.78, 246.78, 246.78, 246.78, 246.78, 246.78, 246.78, 246.78, 246.78, 246.78, 246.78, 246.78, 246.78, 246.78, ],
+            color: '#FF00FF',
+            label: false,
+            marker: {
+                lineWidth: 2,
+                fillColor: 'black'
+            }
+
+        }, {
+            type: 'spline',
+            name: 'Rerata Non HD',
+            data: [789.16, 789.16, 789.16, 789.16, 789.16, 789.16, 789.16, 789.16, 789.16, 789.16, 789.16, 789.16, 789.16, 789.16],
+            color: '#FFA500',
+            label: false,
+            marker: {
+                lineWidth: 2,
+                fillColor: 'black'
+            }
+        },]
+    });
+
+    Highcharts.setOptions({
+        chart: {
+            style: {
+                fontFamily: 'Poppins'
+            }
+        }
+    });
+
+    Highcharts.chart('chart3', {
+        title: {
+            text: 'Capaian Penurunan Deforestasi',
+            font: 'times new roman',
+            align: 'left'
+
+        },
+         subtitle: {
+            text: 'Capaian Penurunan Deforestasi Per Agustus 2019',
+            align: 'left'
+        },
+        xAxis: {
+            categories: ["2016-2017", "2017-2018", "Per-Agustus-2019"]
+        },
+        yAxis: [{ // Primary yAxis
+            labels: {
+                format: '{value} %',
+                style: {
+                    color: Highcharts.getOptions().colors[1]
+                }
+            },
+            title: {
+                text: 'Capaian',
+
+                style: {
+                    color: Highcharts.getOptions().colors[1]
+                }
+            },
+            opposite: false
+
+
+        }],
+        series: [{
+            type: 'column',
+            name: 'HD',
+            data: [17.84, -89.21, -95.96 ],
+           	color: '#133CBB',
+        }, {
+            type: 'column',
+            name: 'Non HD',
+            data: [-5.39, -80.73, -87.87],
+            color: '#BF0B23'
+        }],
+    });
+
+    Highcharts.chart('chart4', {
+        title: {
+            text: 'Deforestasi Terhadap Baseline',
+
+            align: 'left'
+
+        },
+         subtitle: {
+            text: 'Penurunan Deforestasi Tahun 2018 Terhadap Baseline (1990-2016) ',
+            align: 'left'
+        },
+        xAxis: {
+            categories: ["1990-1996", "1996-2000", "2000-2003", "2003-2006", "2006-2009", "2009-2011", "2011-2012", "2012-2013", "2013-2014", "2014-2015", "2015-2016", "2016-2017", "2017-2018"]
+        },
+        yAxis: [{ // Primary yAxis
+            labels: {
+                format: '{value} ha',
+                style: {
+                    color: Highcharts.getOptions().colors[1]
+                }
+            },
+            title: {
+                text: 'Deforestasi',
+
+                style: {
+                    color: Highcharts.getOptions().colors[1]
+                }
+            },
+            opposite: false
+
+
+        }],
+        series: [{
+            type: 'column',
+            name: 'HD',
+            data: [2884, 280, 616, 259, 244, 1088, 59, 975, 564, 256,2116, { y: 2493, color: '#FFA500'}, { y: 269, color: '#FFA500'}],
+            color: '#CAC8C9',
+        }, {
+            type: 'column',
+            name: 'Non HD',
+            data: [5034, 502, 236, 1269, 4728, 3089, 525, 2645, 567, 533, 1388, { y: 1313, color: '#BF0B23'}, { y: 253, color: '#BF0B23'}],
+            color: '#252324'
+        }, {
+            type: 'spline',
+            name: 'Rerata HD',
+            data: [359.26, 359.26, 359.26, 359.26, 359.26, 359.26, 359.26, 359.26, 359.26, 359.26, 359.26, 359.26, 359.26],
+            color: '#FF00FF',
+            label: false,
+            marker: {
+                lineWidth: 2,
+                fillColor: 'black'
+            }
+
+        }, {
+            type: 'spline',
+            name: 'Rerata Non HD',
+            data: [789.16, 789.16, 789.16, 789.16, 789.16, 789.16, 789.16, 789.16, 789.16, 789.16, 789.16, 789.16, 789.16],
+            color: '#FFA500',
+            label: false,
+            marker: {
+                lineWidth: 2,
+                fillColor: 'black'
+            }
+        },]
+    });
+
+    Highcharts.chart('chartContainer2', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Penyebab Deforestasi',
+            align: 'left'
+        },
+        subtitle: {
+            text: 'Penyebab deforestasi Tahun 2018',
+            align: 'left',
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: false
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            name: 'Brands',
+            colorByPoint: true,
+            data: [{
+                name: 'Bukaan HPH',
+                color: '#BF0B23',
+                y:  5.82,
+                sliced: true,
+                selected: true
+
+            }, {
+                name: 'Illegal Logging',
+                color: '#0000FF',
+                y: 82.29
+            }, {
+                name: 'Tambak',
+                color: '#00FF00',
+                y:  1.59
+            }],
+        }]
+    });
+
+    Highcharts.chart('chart5', {
+        title: {
+            text: 'Capaian Penurunan Deforestasi',
+            font: 'times new roman',
+            align: 'left'
+
+        },
+         subtitle: {
+            text: 'Capaian Penurunan Deforestasi Tahun 2018',
+            align: 'left'
+        },
+        xAxis: {
+            categories: ["2016-2017", "2017-2018"]
+        },
+        yAxis: [{ // Primary yAxis
+            labels: {
+                format: '{value} %',
+                style: {
+                    color: Highcharts.getOptions().colors[1]
+                }
+            },
+            title: {
+                text: 'Capaian',
+
+                style: {
+                    color: Highcharts.getOptions().colors[1]
+                }
+            },
+            opposite: false
+
+
+        }],
+        series: [{
+            type: 'column',
+            name: 'HD',
+            data: [17.84, -89.21],
+           	color: '#133CBB',
+        }, {
+            type: 'column',
+            name: 'Non HD',
+            data: [-5.39, -80.73],
+            color: '#BF0B23'
+        }],
+    });
+
+    Highcharts.chart('chart6', {
+        title: {
+            text: 'Deforestasi BPPT Terhadap Baseline',
+            font: 'times new roman',
+            align: 'left'
+
+        },
+         subtitle: {
+            text: 'Deforestasi Terhadap Baseline FREL (1990-2012)',
+            align: 'left'
+        },
+        xAxis: {
+            categories: ["1990-1996", "1996-2000", "2000-2003", "2003-2006", "2006-2009", "2009-2011", "2011-2012", "2012-2013", "2013-2014", "2014-2015", "2015-2016", "2016-2017", "2017-2018", "Per Agust 2019"]
+        },
+        yAxis: [{ // Primary yAxis
+            labels: {
+                format: '{value} ha',
+                style: {
+                    color: Highcharts.getOptions().colors[1]
+                }
+            },
+            title: {
+                text: 'Deforestasi',
+
+                style: {
+                    color: Highcharts.getOptions().colors[1]
+                }
+            },
+            opposite: false
+
+
+        }],
+        series: [{
+            type: 'column',
+            name: 'HD',
+            data: [2884, 280, 616, 259, 244, 1088, 59, { y: 975 , color: '#FA034A'}, { y: 564 , color: '#FA034A'}, { y: 256 , color: '#FA034A'}, { y: 2116, color: '#FA034A'}, { y: 2493, color: '#FFA500'},  {y: 269, color: '#FFA500'}, { y: 10.87, color: '#FFA500'} ],
+           	color: '#CAC8C9',
+        }, {
+            type: 'column',
+            name: 'Non HD',
+            data: [5034, 502, 236, 1269, 4728, 3089, 525, { y:2645, color: '#1F45FC'}, { y:567, color: '#1F45FC'}, { y:533, color: '#1F45FC'}, { y:1388, color: '#1F45FC'}, { y:1313, color: '#BF0B23'}, { y:253, color: '#BF0B23'}, { y: 30.43, color: '#BF0B23'} ],
+            color: '#252324'
+        }, {
+            type: 'spline',
+            name: 'Rerata HD',
+            data: [246.78, 246.78, 246.78, 246.78, 246.78, 246.78, 246.78, 246.78, 246.78, 246.78, 246.78, 246.78, 246.78, 246.78, ],
+            color: '#FF00FF',
+            label: false,
+            marker: {
+                lineWidth: 2,
+                fillColor: 'black'
+            }
+
+        }, {
+            type: 'spline',
+            name: 'Rerata Non HD',
+            data: [699.31, 699.31, 699.31, 699.31, 699.31, 699.31, 699.31, 699.31, 699.31, 699.31, 699.31, 699.31, 699.31, 699.31,  ],
+            color: '#FFA500',
+            label: false,
+            marker: {
+                lineWidth: 2,
+                fillColor: 'black'
+            }
+        },]
+    });
+
+    Highcharts.chart('chart7', {
+        title: {
+            text: 'Degradasi BPPT Terhadap Baseline',
+            font: 'times new roman',
+            align: 'left'
+
+        },
+         subtitle: {
+            text: 'Degradasi Terhadap Baseline FREL (1990-2012)',
+            align: 'left'
+        },
+        xAxis: {
+            categories: ["1990-1996", "1996-2000", "2000-2003", "2003-2006", "2006-2009", "2009-2011", "2011-2012", "2012-2013", "2013-2014", "2014-2015", "2015-2016", "2016-2017", "2017-2018", "Per Agust 2019"]
+        },
+        yAxis: [{ // Primary yAxis
+            labels: {
+                format: '{value} ha',
+                style: {
+                    color: Highcharts.getOptions().colors[1]
+                }
+            },
+            title: {
+                text: 'Deforestasi',
+
+                style: {
+                    color: Highcharts.getOptions().colors[1]
+                }
+            },
+            opposite: false
+
+
+        }],
+        series: [{
+            type: 'column',
+            name: 'HD',
+            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+            color: '#CAC8C9',
+        }, {
+            type: 'column',
+            name: 'Non HD',
+            data: [26.69, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+            color: '#252324'
+        }, {
+            type: 'spline',
+            name: 'Rerata HD',
+            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+            color: '#FF00FF',
+            label: false,
+            marker: {
+                lineWidth: 2,
+                fillColor: 'black'
+            }
+
+        }, {
+            type: 'spline',
+            name: 'Rerata Non HD',
+            data: [1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, ],
+            color: '#FFA500',
+            label: false,
+            marker: {
+                lineWidth: 2,
+                fillColor: 'black'
+            }
+        },]
+    });
+
+////Karhutla
+    Highcharts.setOptions({
+    chart: {
+    style: {
+        fontFamily: 'Poppins'
+    }
+    }
+    });
+
+    Highcharts.chart('chartkarhutlabulanan', {
+    title: {
+    text: 'Historis Karhutla Bulanan',
+    font: 'times new roman',
+    align: 'left'
+
+    },
+    subtitle: {
+    text: 'Historis Karhutla Bulanan Per September 2019',
+    align: 'left'
+    },
+    xAxis: {
+    categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    },
+    yAxis: [{ // Primary yAxis
+    labels: {
+        format: '{value} Titik',
+        style: {
+            color: Highcharts.getOptions().colors[1]
+        }
+    },
+    title: {
+        text: 'Jumlah Titik',
+
+        style: {
+            color: Highcharts.getOptions().colors[1]
+        }
+    },
+    opposite: false
+
+
+    }],
+    series: [{
+    type: 'column',
+    name: 'HD',
+    data: [0, 0,	0,	3,	5,	0,	2,	3,	123],
+    color: '#3DFA0A',
+    }, {
+    type: 'column',
+    name: 'Non HD',
+    data: [0,	0,	2,	0,	4,	4,	0,	0,	43],
+    color: '#FA0A5A'
+    }, {
+    type: 'spline',
+    name: 'Tren HD',
+    data: [0,	0,	0,	3,	2,	-5,	2,	1,	120],
+    color: '#000',
+    label: false,
+    marker: {
+        lineWidth: 0.5,
+        fillColor: 'black'
+    }
+
+    }, {
+    type: 'spline',
+    name: 'Tren Non HD',
+    data: [0,	0,	2,	-2,	4,	0,	-4,	0,	43],
+    color: '#CECBCC',
+    label: false,
+    marker: {
+        lineWidth: 0.5,
+        fillColor: 'black'
+    }
+    },]
+    });
+
+    Highcharts.setOptions({
+    chart: {
+    style: {
+        fontFamily: 'Poppins'
+    }
+    }
+    });
+
+    Highcharts.chart('chartkarhutla2bulanan', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Perbandingan Jumlah Hotspot',
+            align: 'left'
+        },
+        subtitle: {
+            text: 'Perbandingan Jumlah Hotspot Bulanan Per September Tahun 2019',
+            align: 'left',
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: false
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            name: 'Brands',
+            colorByPoint: true,
+            data: [{
+                name: 'Hutan Desa',
+                color: '#BF0B23',
+                y: 71.96,
+                sliced: true,
+                selected: true
+            }, {
+                name: 'Non Hutan Desa',
+                color: '#0000FF',
+                y: 28.04,
+            }, ],
+        }]
+    });
+
+          Highcharts.setOptions({
+    chart: {
+    style: {
+    fontFamily: 'Poppins'
+    }
+    }
+    });
+
+    Highcharts.chart('chartkarhutla', {
+    title: {
+    text: 'Historis Karhutla',
+    font: 'times new roman',
+    align: 'left'
+
+    },
+    subtitle: {
+    text: 'Historis Karhutla Tahun 2015 - September Tahun 2019',
+    align: 'left'
+    },
+    xAxis: {
+    categories: ["2015", "2016", "2017", "2018", "Per Sept 2019"]
+    },
+    yAxis: [{ // Primary yAxis
+    labels: {
+        format: '{value} Titik',
+        style: {
+            color: Highcharts.getOptions().colors[1]
+        }
+    },
+    title: {
+        text: 'Jumlah Hotspot',
+
+        style: {
+            color: Highcharts.getOptions().colors[1]
+        }
+    },
+    opposite: false
+
+
+    }],
+    series: [{
+    type: 'column',
+    name: 'HD',
+    data: [13, 3, 0, 9, 136],
+    color: '#3DFA0A',
+    }, {
+    type: 'column',
+    name: 'Non HD',
+    data: [10, 0, 1, 7,	53],
+    color: '#FA0A5A'
+    }, {
+    type: 'spline',
+    name: 'Tren HD',
+    data: [0, -10, -3, 9, 127],
+    color: '#000',
+    label: false,
+    marker: {
+        lineWidth: 0.5,
+        fillColor: 'black'
+    }
+
+    }, {
+    type: 'spline',
+    name: 'Tren Non HD',
+    data: [0, -10, 1, 6, 46],
+    color: '#CECBCC',
+    label: false,
+    marker: {
+        lineWidth: 0.5,
+        fillColor: 'black'
+    }
+    },]
+    });
+
+    Highcharts.setOptions({
+    chart: {
+    style: {
+    fontFamily: 'Poppins'
+    }
+    }
+    });
+
+    Highcharts.chart('chartkarhutla2', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Perbandingan Jumlah Hotspot',
+            align: 'left'
+        },
+        subtitle: {
+            text: 'Perbandingan Jumlah Hotspot Tahun 2015 - September Tahun 2019',
+            align: 'left',
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: false
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            name: 'Brands',
+            colorByPoint: true,
+            data: [{
+                name: 'Hutan Desa',
+                color: '#BF0B23',
+                y: 69.40,
+                sliced: true,
+                selected: true
+            }, {
+                name: 'Non Hutan Desa',
+                color: '#0000FF',
+                y: 30.60
+            }, ],
+        }]
+    });
+
+          Highcharts.setOptions({
+    chart: {
+    style: {
+    fontFamily: 'Poppins'
+    }
+    }
+    });
+    </script>
+</body>
+</html>

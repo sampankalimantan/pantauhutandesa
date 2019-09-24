@@ -1,0 +1,316 @@
+@charset "utf-8";
+
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+
+body {
+    font-family: 'Fira Sans Condensed',sans-serif;
+    background: #fafafa;
+    position: fixed;
+    width: 100%
+}
+
+p {
+    font-family: 'Arial',sans-serif;
+    font-size: 1.1em;
+    font-weight: 1000;
+    line-height: 1.7em;
+    color: #999;
+}
+
+.h3, h3 {
+    font-size: 100%;
+    font-family: 'Fira Sans Condensed',sans-serif;
+    font-weight: bold;
+
+}
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar {
+    background: #3498DB ;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 3px;
+    margin-top:-4px;
+}
+
+
+.container-fluid {
+width: 100%;
+padding-right: 15px;
+padding-left: 0px;
+margin-right: auto;
+margin-left: auto;
+}
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+.styled-checkbox {
+  position: absolute; // take it out of document flow
+  opacity: 0; // hide it
+
+  & + label {
+    position: relative;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  // Box.
+  & + label:before {
+    content: '';
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: text-top;
+    width: 20px;
+    height: 20px;
+    background: white;
+  }
+
+  // Box hover
+  &:hover + label:before {
+    background: #f35429;
+  }
+
+  // Box focus
+  &:focus + label:before {
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+  }
+
+  // Box checked
+  &:checked + label:before {
+    background: #f35429;
+  }
+
+  // Disabled state label.
+  &:disabled + label {
+    color: #b8b8b8;
+    cursor: auto;
+  }
+
+  // Disabled box.
+  &:disabled + label:before {
+    box-shadow: none;
+    background: #ddd;
+  }
+
+  // Checkmark. Could be replaced with an image
+  &:checked + label:after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 9px;
+    background: white;
+    width: 2px;
+    height: 2px;
+    box-shadow:
+      2px 0 0 white,
+      4px 0 0 white,
+      4px -2px 0 white,
+      4px -4px 0 white,
+      4px -6px 0 white,
+      4px -8px 0 white;
+    transform: rotate(45deg);
+  }
+}
+
+// Demo-only styles
+// --------------
+
+html {
+  background: lightgray;
+}
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.unstyled {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+li {
+  margin: 20px 0;
+}
+
+.centered {
+  width: 300px;
+  margin: auto;
+}
+
+.title {
+  text-align: center;
+  color: rgb(69, 113, 236);
+}
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+#sidebar {
+    min-width: 294px;
+    max-width: 210px;
+    height: 980px;
+    background: #fff;
+    transition: all 0.3s;
+    overflow: visible;
+    box-shadow: 0px 1px 10px #494848;
+}
+
+#sidebar.active {
+    margin-left: -296px;
+}
+
+#sidebar .sidebar-header {
+    height: 5%;
+    padding-bottom: 8px;
+    padding-top: 16px;
+    padding-left: 8px;
+    background: #F2F3F4;
+    color: #2a9fd6;
+    box-shadow: 0px 1px 3px #999;
+
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+
+}
+
+#sidebar ul p {
+
+    padding-left: 10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    color: #48C9B0;
+    font-family: 'Fira Sans Condensed',sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    flex-grow: 1;
+    border-bottom: 1px solid #D7DBDD  ;
+    display: block;
+}
+
+#sidebar ul li a:hover {
+    color: #7386D5;
+    background: #c0c0c0;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: #BFC9CA;
+
+}
+.list-unstyled {
+    padding-left: 20px;
+    list-style: none;
+}
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+a.download {
+    background: #fff;
+    color: #7386D5;
+}
+
+a.article,
+a.article:hover {
+    background: #6d7fcc !important;
+    color: #fff !important;
+}
+
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width: 100%;
+    padding: 5px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -296px;
+
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
+}
+.leaflet-popup{
+    max-width: 200px !important;
+    width:400px  !important;
+    font: 12px/20px 'Fira Sans Condensed',sans-serif, Arial, Helvetica;
+    }
+.leaflet-popup-content{
+    padding: 3px;
+    }
+
+.dropup.dropdown-menu{
+    margin-bottom: 10px;
+    max-width: 400px !important;
+    }
+
+.mapboxgl-popup-close-button{
+    position:absolute !important;
+    top: .75rem !important;
+    right: .75rem !important;
+    z-index: 1000 !important;
+
+    }
