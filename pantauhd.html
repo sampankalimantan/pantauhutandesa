@@ -303,6 +303,19 @@
                                                        </ul>
                                                       </ul>
                                                 </li>
+                                                <li style="padding-top: 10px;padding-bottom: 10px;width: 260px; padding-top: 5px; border-bottom: 1px solid #def0e8 ">
+                                                  <a href="#homeSubmenuwpk" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style='font-family: "Poppins", sans-serif; font-size: 12px; font-weight: bold; color: #1e6e5a;font-family: "Poppins", sans-serif;margin-bottom: -17px'>Pengukuran Kinerja REDD+ <i class="fa fa-caret-down"></i></a>
+                                                  <ul class="collapse list-unstyled" id="homeSubmenuwpk">
+                                                    <li class="field check-round slide" style="margin-bottom: -33px">
+                                                         <input type="checkbox" name="select-all4" id="select-allwpk" />
+                                                         <label for="select-allwpk" style="font-size: 12px; font-family: "Poppins";">Semua Layer Kawasan<span></span></label>
+                                                     </li>
+                                                      <ul class="field check-round slide" style="padding-top: 10px;margin-bottom: -26px">
+                                                        <input type="checkbox" name="wpk" id="wpk" class="wpk" />
+                                                        <label for="wpk" style="margin-top: -7px"><i class='fas fa-square' style='color:#c3c6bb;'></i> WPK REDD+<span></span></label>
+                                                      </ul>
+                                                      </ul>
+                                                   </li>
                                                <li style="padding-top: 10px;padding-bottom: 10px;width: 260px; padding-top: 5px; border-bottom: 1px solid #def0e8 ">
                                                  <a href="#homeSubmenu8" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style='font-family: "Poppins", sans-serif; font-size: 12px; font-weight: bold; color: #1e6e5a;font-family: "Poppins", sans-serif;margin-bottom: -17px'>Izin Kawasan <i class="fa fa-caret-down"></i></a>
                                                  <ul class="collapse list-unstyled" id="homeSubmenu8">
@@ -605,7 +618,20 @@
       }
     });
     });
+    $(document).ready(function() {
+    $("#select-allwpk").click(function() {
+      $(".wpk").prop("checked", this.checked);
+    });
 
+    $('.wpk').click(function() {
+      if ($('.wpk:checked').length == $('.wpk').length) {
+        $('#select-allwpk').prop('checked', true);
+
+      } else {
+        $('#select-allwpk').prop('checked', false);
+      }
+    });
+    });
 
 
     var map = L.map('mapid').setView([-0.77,109.50],10.5);
@@ -1020,6 +1046,26 @@
                     }
                     };
 
+                    var wpk = new L.GeoJSON.AJAX(["json4/wpk/wpk.geojson"],{onEachFeature:popUp,style: styleplot})
+                    document.getElementById('wpk').onclick = function() {
+                    if ( this.checked ) {
+                        map.addLayer(wpk);
+                    } else {
+                      map.removeLayer(wpk);
+                    }
+                  };
+
+                  document.getElementById('select-allwpk').onclick = function() {
+                  if ( this.checked ) {
+                      map.addLayer(wpk);
+                  } else {
+                      map.removeLayer(wpk);
+                  }
+                  };
+
+
+
+
                       var iconhotspot = L.icon({
                        iconUrl: 'icon/hotspot.png',
                        iconSize: [8, 13],
@@ -1143,7 +1189,8 @@
                       }
                       };
 
-                    $.getJSON("json4/karhutla/hotspot192.geojson",function(data){
+                      $.getJSON("json4/karhutla/hotspot192",function(data){
+
              // set violationPoints to the dataset, and add the rodent violation GeoJSON layer to the map
                         hotspot192 = L.geoJson(data, {
                          onEachFeature: function popUp(f,l){
