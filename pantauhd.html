@@ -228,6 +228,10 @@
                                       <input type="checkbox" name="agust" id="agust" class="monitdef19"/>
                                       <label for="agust" style="margin-top: -38px"><i class='fas fa-square' style='color:red;'></i> Agustus<span></span></label>
                                     </ul>
+                                     <ul class="field check-round slide" style="padding-top: 10px;">
+                                      <input type="checkbox" name="sept" id="sept" class="monitdef19"/>
+                                      <label for="sept" style="margin-top: -38px"><i class='fas fa-square' style='color:red;'></i> September<span></span></label>
+                                    </ul>
                                    </ul>
                                    <a href="#homeSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style='font-family: "Poppins", sans-serif; font-size: 12px; color: #000;font-family: "Poppins", sans-serif;margin-bottom: -17px'>Monitoring Deforestasi Tahun 2018 <i class="fa fa-caret-down"></i></a>
                                    <ul class="collapse list-unstyled" id="homeSubmenu4">
@@ -883,6 +887,15 @@
                    map.removeLayer(agust);
                  }
                };
+          
+                var sept = new L.GeoJSON.AJAX(["json4/monitoring/sept.geojson"],{onEachFeature:popUp,style: stylemintoring})
+               document.getElementById('sept').onclick = function() {
+               if ( this.checked ) {
+                   map.addLayer(sept);
+               } else {
+                 map.removeLayer(sept);
+               }
+               };
 
                document.getElementById('select-all2').onclick = function() {
                if ( this.checked ) {
@@ -894,6 +907,7 @@
                    map.addLayer(jun);
                    map.addLayer(jul);
                    map.addLayer(agust);
+                   map.addLayer(sept);
                } else {
                    map.removeLayer(jan);
                    map.removeLayer(feb);
@@ -903,6 +917,7 @@
                    map.removeLayer(jun);
                    map.removeLayer(jul);
                    map.removeLayer(agust);
+                   map.removeLayer(sept);
                }
                };
 
@@ -1189,7 +1204,7 @@
                       }
                       };
 
-                      $.getJSON("json4/karhutla/hotspot192",function(data){
+                      $.getJSON("json4/karhutla/hotspot192.geojson",function(data){
 
              // set violationPoints to the dataset, and add the rodent violation GeoJSON layer to the map
                         hotspot192 = L.geoJson(data, {
