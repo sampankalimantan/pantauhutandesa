@@ -233,6 +233,21 @@
                                       <label for="sept" style="margin-top: -38px"><i class='fas fa-square' style='color:red;'></i> September<span></span></label>
                                     </ul>
                                    </ul>
+                                   
+                                   <ul class="field check-round slide" style="padding-top: 25px;margin-bottom: -23px;">
+                                      <input type="checkbox" name="okt3" id="okt3" class="monitdef19"/>
+                                      <label for="okt3" style="margin-top: -29px"><i class='fas fa-square' style='color:red;'></i> Oktober (Belum Verifikasi)<span></span></label>
+                                    </ul>
+                                    <ul class="field check-round slide" style="padding-top: 25px;margin-bottom: -23px;">
+                                      <input type="checkbox" name="nov2" id="nov2" class="monitdef19"/>
+                                      <label for="nov2" style="margin-top: -29px"><i class='fas fa-square' style='color:red;'></i> November (Belum Verifikasi)<span></span></label>
+                                    </ul>
+                                    <ul class="field check-round slide" style="padding-top: 25px;margin-bottom: -23px;">
+                                      <input type="checkbox" name="des" id="des" class="monitdef19"/>
+                                      <label for="des" style="margin-top: -29px"><i class='fas fa-square' style='color:red;'></i> Desember (Belum Verifikasi)<span></span></label>
+                                    </ul>
+                                   
+                                   
                                    <a href="#homeSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style='font-family: "Poppins", sans-serif; font-size: 12px; color: #000;font-family: "Poppins", sans-serif;margin-bottom: -17px'>Monitoring Deforestasi Tahun 2018 <i class="fa fa-caret-down"></i></a>
                                    <ul class="collapse list-unstyled" id="homeSubmenu4">
                                      <li class="field check-round slide" style="margin-bottom: -33px">
@@ -971,6 +986,33 @@
                  map.removeLayer(sept);
                }
                };
+          
+            var okt3 = new L.GeoJSON.AJAX(["json4/monitoring/okt3.geojson"],{onEachFeature:popUp,style: stylemintoring})
+               document.getElementById('okt3').onclick = function() {
+               if ( this.checked ) {
+                   map.addLayer(okt3);
+               } else {
+                 map.removeLayer(okt3);
+               }
+               };
+
+               var nov2 = new L.GeoJSON.AJAX(["json4/monitoring/nov2.geojson"],{onEachFeature:popUp,style: stylemintoring})
+               document.getElementById('nov2').onclick = function() {
+               if ( this.checked ) {
+                   map.addLayer(nov2);
+               } else {
+                 map.removeLayer(nov2);
+               }
+               };
+
+               var des = new L.GeoJSON.AJAX(["json4/monitoring/des.geojson"],{onEachFeature:popUp,style: stylemintoring})
+               document.getElementById('des').onclick = function() {
+               if ( this.checked ) {
+                   map.addLayer(des);
+               } else {
+                 map.removeLayer(des);
+               }
+               };
 
                document.getElementById('select-all2').onclick = function() {
                if ( this.checked ) {
@@ -983,6 +1025,9 @@
                    map.addLayer(jul);
                    map.addLayer(agust);
                    map.addLayer(sept);
+                    map.addLayer(okt3);
+                   map.addLayer(nov2);
+                   map.addLayer(des);
                } else {
                    map.removeLayer(jan);
                    map.removeLayer(feb);
@@ -993,6 +1038,9 @@
                    map.removeLayer(jul);
                    map.removeLayer(agust);
                    map.removeLayer(sept);
+                    map.removeLayer(okt3);
+                   map.removeLayer(nov2);
+                   map.removeLayer(des);
                }
                };
 
