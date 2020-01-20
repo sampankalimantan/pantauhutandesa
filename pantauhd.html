@@ -239,12 +239,12 @@
                                       <label for="okt3" style="margin-top: -52px"><i class='fas fa-square' style='color:red;'></i> Oktober (Belum Verifikasi)<span></span></label>
                                     </ul>
                                     <ul class="field check-round slide" style="padding-top: 25px;margin-bottom: -23px;">
-                                      <input type="checkbox" name="nov2" id="nov2" class="monitdef19"/>
-                                      <label for="nov2" style="margin-top: -45px"><i class='fas fa-square' style='color:red;'></i> November (Belum Verifikasi)<span></span></label>
+                                      <input type="checkbox" name="nov3" id="nov3" class="monitdef19"/>
+                                      <label for="nov3" style="margin-top: -45px"><i class='fas fa-square' style='color:red;'></i> November (Belum Verifikasi)<span></span></label>
                                     </ul>
                                     <ul class="field check-round slide" style="padding-top: 25px;margin-bottom: -23px;">
-                                      <input type="checkbox" name="des" id="des" class="monitdef19"/>
-                                      <label for="des" style="margin-top: -36px"><i class='fas fa-square' style='color:red;'></i> Desember (Belum Verifikasi)<span></span></label>
+                                      <input type="checkbox" name="des1" id="des1" class="monitdef19"/>
+                                      <label for="des1" style="margin-top: -36px"><i class='fas fa-square' style='color:red;'></i> Desember (Belum Verifikasi)<span></span></label>
                                     </ul>
                                    
                                    
@@ -996,21 +996,21 @@
                }
                };
 
-               var nov2 = new L.GeoJSON.AJAX(["json4/monitoring/nov2.geojson"],{onEachFeature:popUp,style: stylemintoring})
-               document.getElementById('nov2').onclick = function() {
+               var nov3 = new L.GeoJSON.AJAX(["json4/monitoring/nov2.geojson"],{onEachFeature:popUp,style: stylemintoring})
+               document.getElementById('nov3').onclick = function() {
                if ( this.checked ) {
-                   map.addLayer(nov2);
+                   map.addLayer(nov3);
                } else {
-                 map.removeLayer(nov2);
+                 map.removeLayer(nov3);
                }
                };
 
-               var des = new L.GeoJSON.AJAX(["json4/monitoring/des.geojson"],{onEachFeature:popUp,style: stylemintoring})
-               document.getElementById('des').onclick = function() {
+               var des1 = new L.GeoJSON.AJAX(["json4/monitoring/des.geojson"],{onEachFeature:popUp,style: stylemintoring})
+               document.getElementById('des1').onclick = function() {
                if ( this.checked ) {
-                   map.addLayer(des);
+                   map.addLayer(des1);
                } else {
-                 map.removeLayer(des);
+                 map.removeLayer(des1);
                }
                };
 
@@ -1026,8 +1026,8 @@
                    map.addLayer(agust);
                    map.addLayer(sept);
                     map.addLayer(okt3);
-                   map.addLayer(nov2);
-                   map.addLayer(des);
+                   map.addLayer(nov3);
+                   map.addLayer(des1);
                } else {
                    map.removeLayer(jan);
                    map.removeLayer(feb);
@@ -1039,8 +1039,8 @@
                    map.removeLayer(agust);
                    map.removeLayer(sept);
                     map.removeLayer(okt3);
-                   map.removeLayer(nov2);
-                   map.removeLayer(des);
+                   map.removeLayer(nov3);
+                   map.removeLayer(des1);
                }
                };
 
